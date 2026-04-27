@@ -1,0 +1,26 @@
+-- 1. Membuat dan menggunakan database
+CREATE DATABASE IF NOT EXISTS propertyhub_db;
+USE propertyhub_db;
+
+-- 2. Membuat tabel Fasilitas (Dibuat lebih dulu karena tidak memiliki Foreign Key)
+CREATE TABLE Fasilitas (
+    ID_Fasilitas INT AUTO_INCREMENT PRIMARY KEY,
+    Nama_Fasilitas VARCHAR(100) NOT NULL,
+    Kategori ENUM('Unit', 'Bersama') NOT NULL
+);
+
+-- 3. Membuat tabel Unit
+CREATE TABLE Unit (
+    ID_Unit INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Properti INT NOT NULL,
+    Nomor_Unit VARCHAR(20) NOT NULL,
+    Lantai VARCHAR(10),
+    Tipe_Unit ENUM('Single', 'Double', 'Studio', '1BR', '2BR') NOT NULL,
+    Luas_m2 DECIMAL(10, 2),
+    Harga_Per_Bulan DECIMAL(15, 2) NOT NULL,
+    Status_Unit ENUM('Tersedia', 'Terisi', 'Maintenance') NOT NULL DEFAULT 'Tersedia'
+    
+    -- CATATAN FOREIGN KEY: 
+    -- Hapus tanda komentar (--) pada baris di bawah ini JIKA tabel 'Properti' sudah Anda buat sebelumnya.
+    -- CONSTRAINT fk_properti FOREIGN KEY (ID_Properti) REFERENCES Properti(ID_Properti)
+);
