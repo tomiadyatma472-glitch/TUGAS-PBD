@@ -1,4 +1,4 @@
--- DDL Tabel Properti
+-- DDL Tabel Properti (MINUS FOREIGN KEY)
 CREATE TABLE properti (
     id_properti INT AUTO_INCREMENT PRIMARY KEY,
     id_pengelola INT NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE properti (
     tipe_properti ENUM('Kos', 'Apartemen'),
 );
 
--- DDL Tabel Maintenance_Request
+-- DDL Tabel Maintenance_Request (TANPA FOREIGN KEY YA MAS)
 CREATE TABLE maintenance_request (
     id_request INT AUTO_INCREMENT PRIMARY KEY,
     id_kontrak INT NOT NULL,
